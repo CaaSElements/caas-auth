@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-ajax/iron-ajax.html">
+<link rel="import" href="../caas-auth-behavior/caas-auth-behavior.html">
 
 <!--
 `caas-auth`
@@ -271,6 +272,7 @@ Once `signedIn = true`, you can perform the following methods:
     Polymer({
 
       is: 'caas-auth',
+      behaviors: [CaasAuthBehavior],
 
       properties: {
 
