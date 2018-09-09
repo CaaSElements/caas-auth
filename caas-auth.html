@@ -153,43 +153,120 @@ Once `signedIn = true`, you can perform the following methods:
 -->
 
 <dom-module id="caas-auth">
-	<template>
+  <template>
 
-		<iron-ajax id="createInvestor" url="[[apiEndpoint]]/investors" handle-as="json" method="POST" loading="{{creatingInvestor}}"
-		 on-response="_handleCreateInvestor" on-error="_handleCreateInvestorError"></iron-ajax>
+    <iron-ajax
+      id="createInvestor"
+      url="[[apiEndpoint]]/investors"
+      handle-as="json"
+      method="POST"
+      loading="{{creatingInvestor}}"
+      on-response="_handleCreateInvestor"
+      on-error="_handleCreateInvestorError"
+    ></iron-ajax>
 
-		<iron-ajax id="signIn" url="[[apiEndpoint]]/authenticate" handle-as="json" method="POST" loading="{{signingIn}}"
-		 last-response="{{lastSignInResponse}}" last-error="{{lastSignInError}}" on-response="_handleSignIn" on-error="_handleSignInError"></iron-ajax>
+    <iron-ajax
+      id="signIn"
+      url="[[apiEndpoint]]/authenticate"
+      handle-as="json"
+      method="POST"
+      loading="{{signingIn}}"
+      last-response="{{lastSignInResponse}}"
+      last-error="{{lastSignInError}}"
+      on-response="_handleSignIn"
+      on-error="_handleSignInError"
+    ></iron-ajax>
 
-		<iron-ajax id="signOut" url="[[apiEndpoint]]/authenticate" headers="[[_authHeader]]" handle-as="json" method="DELETE"
-		 loading="{{signingOut}}" last-response="{{lastSignOutResponse}}" last-error="{{lastSignOutError}}" on-response="_handleSignOut"
-		 on-error="_handleSignOutError"></iron-ajax>
+    <iron-ajax
+      id="signOut"
+      url="[[apiEndpoint]]/authenticate"
+      headers="[[_authHeader]]"
+      handle-as="json"
+      method="DELETE"
+      loading="{{signingOut}}"
+      last-response="{{lastSignOutResponse}}"
+      last-error="{{lastSignOutError}}"
+      on-response="_handleSignOut"
+      on-error="_handleSignOutError"
+    ></iron-ajax>
 
-		<iron-ajax id="enableTwoFactor" url="[[apiEndpoint]]/authenticate/twofactor" headers="[[_authHeader]]" handle-as="json"
-		 method="POST" loading="{{enablingTwoFactor}}" last-response="{{lastEnableTwoFactorResponse}}" last-error="{{lastEnableTwoFactorError}}"
-		 on-response="_handleEnableTwoFactor" on-error="_handleEnableTwoFactorError"></iron-ajax>
+    <iron-ajax
+      id="enableTwoFactor"
+      url="[[apiEndpoint]]/authenticate/twofactor"
+      headers="[[_authHeader]]"
+      handle-as="json"
+      method="POST"
+      loading="{{enablingTwoFactor}}"
+      last-response="{{lastEnableTwoFactorResponse}}"
+      last-error="{{lastEnableTwoFactorError}}"
+      on-response="_handleEnableTwoFactor"
+      on-error="_handleEnableTwoFactorError"
+    ></iron-ajax>
 
-		<iron-ajax id="trustClientIP" url="[[apiEndpoint]]/authenticate/trust-client-ip" headers="[[_authHeader]]" handle-as="json"
-		 method="POST" loading="{{trustingClientIp}}" last-response="{{lastTrustClientIPResponse}}" last-error="{{lastTrustClientIPError}}"
-		 on-response="_handleTrustClientIP" on-error="_handleTrustClientIPError"></iron-ajax>
+    <iron-ajax
+      id="trustClientIP"
+      url="[[apiEndpoint]]/authenticate/trust-client-ip"
+      headers="[[_authHeader]]"
+      handle-as="json"
+      method="POST"
+      loading="{{trustingClientIp}}"
+      last-response="{{lastTrustClientIPResponse}}"
+      last-error="{{lastTrustClientIPError}}"
+      on-response="_handleTrustClientIP"
+      on-error="_handleTrustClientIPError"
+    ></iron-ajax>
 
-		<iron-ajax id="distrustClientIP" url="[[apiEndpoint]]/authenticate/trust-client-ip" headers="[[_authHeader]]"
-		 handle-as="json" method="DELETE" loading="{{distrustingClientIp}}" last-response="{{lastDistrustClientIPResponse}}"
-		 last-error="{{lastDistrustClientIPError}}" on-response="_handleDistrustClientIP" on-error="_handleDistrustClientIPError"></iron-ajax>
+    <iron-ajax
+      id="distrustClientIP"
+      url="[[apiEndpoint]]/authenticate/trust-client-ip"
+      headers="[[_authHeader]]"
+      handle-as="json"
+      method="DELETE"
+      loading="{{distrustingClientIp}}"
+      last-response="{{lastDistrustClientIPResponse}}"
+      last-error="{{lastDistrustClientIPError}}"
+      on-response="_handleDistrustClientIP"
+      on-error="_handleDistrustClientIPError"
+    ></iron-ajax>
 
-		<iron-ajax id="disableTwoFactor" url="[[apiEndpoint]]/authenticate/twofactor" headers="[[_authHeader]]" handle-as="json"
-		 method="DELETE" loading="{{disablingTwoFactor}}" last-response="{{lastDisableTwoFactorResponse}}" last-error="{{lastDisableTwoFactorError}}"
-		 on-response="_handleDisableTwoFactor" on-error="_handleDisableTwoFactorError"></iron-ajax>
+    <iron-ajax
+      id="disableTwoFactor"
+      url="[[apiEndpoint]]/authenticate/twofactor"
+      headers="[[_authHeader]]"
+      handle-as="json"
+      method="DELETE"
+      loading="{{disablingTwoFactor}}"
+      last-response="{{lastDisableTwoFactorResponse}}"
+      last-error="{{lastDisableTwoFactorError}}"
+      on-response="_handleDisableTwoFactor"
+      on-error="_handleDisableTwoFactorError"
+    ></iron-ajax>
 
-		<iron-ajax id="setPassword" url="[[apiEndpoint]]/forgotpassword" handle-as="json" method="POST" last-response="{{lastSetPasswordResponse}}"
-		 last-error="{{lastSetPasswordError}}" loading="{{settingPassword}}" on-response="_handleSetPassword" on-error="_handleSetPasswordError"></iron-ajax>
+    <iron-ajax
+      id="setPassword"
+      url="[[apiEndpoint]]/forgotpassword"
+      handle-as="json"
+      method="POST"
+      last-response="{{lastSetPasswordResponse}}"
+      last-error="{{lastSetPasswordError}}"
+      loading="{{settingPassword}}"
+      on-response="_handleSetPassword"
+      on-error="_handleSetPasswordError"
+    ></iron-ajax>
 
-		<iron-ajax id="confirmPassword" url="[[apiEndpoint]]/forgotpassword/validate" handle-as="json" method="POST" loading="{{confirmingPassword}}"
-		 last-response="{{lastConfirmPasswordResponse}}" last-error="{{lastConfirmPasswordError}}" on-response="_handleConfirmPassword"
-		 on-error="_handleConfirmPasswordError"></iron-ajax>
+    <iron-ajax
+      id="confirmPassword"
+      url="[[apiEndpoint]]/forgotpassword/validate"
+      handle-as="json"
+      method="POST"
+      loading="{{confirmingPassword}}"
+      last-response="{{lastConfirmPasswordResponse}}"
+      last-error="{{lastConfirmPasswordError}}"
+      on-response="_handleConfirmPassword"
+      on-error="_handleConfirmPasswordError"
+    ></iron-ajax>
 
-	</template>
-
+  </template>
 	<script>
 		Polymer({
 
