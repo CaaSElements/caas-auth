@@ -309,8 +309,7 @@ Once `signedIn = true`, you can perform the following methods:
 				accessToken: {
 					type: String,
 					value: null,
-					notify: true,
-					observer: '_handleAccessTokenChanged'
+					notify: true
 				},
 
 				/**
@@ -474,6 +473,9 @@ Once `signedIn = true`, you can perform the following methods:
 				}
 
 			},
+			observers: [
+				'_handleAccessTokenChanged(accessToken, _assignedRoles, _roleDescriptions)'
+			],
 
 
 			ready: function () {
@@ -632,13 +634,13 @@ Once `signedIn = true`, you can perform the following methods:
 				this._setRequiresAuthenticationCode(false);
 			},
 
-			_handleAccessTokenChanged: function (accessToken) {
+			_handleAccessTokenChanged: function (accessToken, assignedRoles, roleDescriptions) {
 				if (accessToken) {
 					this.fire('iron-signal', {
 						name: 'caas-access-token', data: {
 							accessToken: accessToken || null,
-							assignedRoles: this._assignedRoles,
-							roleDescriptions: this._roleDescriptions
+							assignedRoles: assignedRoles || null,
+							roleDescriptions: roleDescriptions || null
 						}
 					}
 					);
